@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attrium — Conexões que movem negócios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DESIGN SYSTEM ATTRIUM — paleta oficial
+   Usar estas variáveis em todo o arquivo. Não criar tons novos.
+   ============================================================ */
+:root{
+  --fundo-claro:#F7F8FA; --branco:#FFFFFF; --azul-marinho:#152438;
+  --dourado:#E2A645; --texto:#525D6E; --texto-claro:#D1D5DB;
+  --raio-card:16px; --raio-botao:999px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--fundo-claro);color:var(--texto);line-height:1.7;font-size:17px}
+h1,h2,h3{font-family:'Sora',sans-serif;color:var(--azul-marinho);line-height:1.15}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+.tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--dourado);margin-bottom:20px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--dourado);color:var(--azul-marinho);font-weight:600;text-decoration:none;padding:14px 28px;border-radius:var(--raio-botao);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(226,166,69,.35)}
+.btn.claro{background:var(--branco)}
+header{position:fixed;top:0;left:0;right:0;background:rgba(247,248,250,.92);backdrop-filter:blur(8px);z-index:100;border-bottom:1px solid rgba(21,36,56,.06)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;flex-wrap:wrap;gap:12px}
+.marca{font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:var(--azul-marinho);text-decoration:none}
+.marca span{color:var(--dourado)}
+.menu{display:flex;gap:28px;align-items:center}
+.menu a{color:var(--texto);text-decoration:none;font-size:15px;font-weight:500}
+.menu a:hover{color:var(--azul-marinho)}
+.hero{padding:200px 0 110px}
+.hero h1{font-size:clamp(36px,5.5vw,64px);font-weight:800;max-width:880px;margin-bottom:24px}
+.hero .ouro{color:var(--dourado)}
+.hero p{font-size:20px;max-width:680px;margin-bottom:36px}
+.manifesto{background:var(--branco)}
+.manifesto h2{font-size:clamp(30px,4.5vw,48px);font-weight:800}
+.manifesto .cinza{color:#9AA6B8}
+.manifesto p{max-width:680px;margin-top:20px;font-size:19px}
+.intro h2{font-size:clamp(28px,4vw,42px);font-weight:800;margin-bottom:12px}
+.intro h2 .ouro{color:var(--dourado)}
+.intro .apoio{font-size:18px;margin-bottom:56px}
+.grid-parceiros{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.card-parceiro{position:relative;background:var(--branco);border-radius:var(--raio-card);padding:36px;box-shadow:0 4px 20px rgba(21,36,56,.06);transition:transform .2s,box-shadow .2s}
+.card-parceiro:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(21,36,56,.1)}
+.icone-maleta{position:absolute;top:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--branco);box-shadow:0 2px 10px rgba(21,36,56,.1);display:flex;align-items:center;justify-content:center}
+.card-parceiro .num{font-family:'Sora',sans-serif;font-weight:700;color:var(--dourado);font-size:15px;letter-spacing:.1em}
+.card-parceiro .cat{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--dourado);margin:10px 0 6px}
+.card-parceiro h3{font-size:22px;margin-bottom:10px;max-width:80%}
+.card-parceiro p{font-size:15px;margin-bottom:20px}
+.link-prop{color:var(--azul-marinho);font-weight:600;text-decoration:none;font-size:15px}
+.link-prop:hover{color:var(--dourado)}
+.cta{background:var(--azul-marinho);text-align:center}
+.cta h2{color:var(--branco);font-size:clamp(30px,4vw,44px);margin-bottom:32px}
+footer{background:var(--azul-marinho);color:var(--texto-claro);padding:40px 0;border-top:1px solid rgba(255,255,255,.08)}
+footer .linha{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+footer a{color:var(--texto-claro)}
+.fina{font-size:13px;opacity:.7;margin-top:24px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+.reveal.on{opacity:1;transform:none}
+#btn-menu{display:none;background:none;border:none;cursor:pointer;padding:8px}
+#btn-menu span{display:block;width:22px;height:2px;background:var(--azul-marinho);margin:5px 0}
+@media(max-width:860px){
+  .grid-parceiros{grid-template-columns:1fr}
+  .menu{display:none;width:100%;flex-direction:column;align-items:flex-start;gap:16px;padding:16px 0}
+  .menu.aberto{display:flex}
+  #btn-menu{display:block}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav container">
+    <a href="/" class="marca">Attrium<span>.</span></a>
+    <button id="btn-menu" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    <nav class="menu" id="menu">
+      <a href="/">Início</a>
+      <a href="#parceiros">Parceiros</a>
+      <a href="#contato">Contato</a>
+      <a href="#contato" class="btn">Fale conosco →</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="tag">Attrium Soluções</span>
+    <h1>Conexões que <span class="ouro">movem</span> negócios.<br>Soluções que <span class="ouro">fazem acontecer</span>.</h1>
+    <p>Conteúdo, estratégia e especialistas para desafios que não cabem em uma fórmula pronta.</p>
+    <a href="#parceiros" class="btn">Conheça nossos parceiros →</a>
+  </div>
+</section>
+
+<section class="manifesto">
+  <div class="container reveal">
+    <span class="tag">O nosso jeito</span>
+    <h2>Mais do que <span class="cinza">conectar</span></h2>
+    <p>A Attrium Soluções Corporativas é um elo entre empresas privadas, órgãos públicos federais e consultorias consagradas no mercado.</p>
+  </div>
+</section>
+
+<section id="parceiros" class="intro" style="padding-top:96px">
+  <div class="container">
+    <span class="tag">Quem caminha com a gente</span>
+    <h2>Parcerias que <span class="ouro">ampliam</span> possibilidades</h2>
+    <p class="apoio">Quatro especialidades, uma conexão com propósito.</p>
+    <div class="grid-parceiros">
+      <div class="card-parceiro reveal">
+        <div class="icone-maleta"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#152438" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <span class="num">01</span>
+        <span class="cat">Gestão e melhoria de processos</span>
+        <h3>Thoth Consultoria</h3>
+        <p>Desenvolvimento organizacional, compliance, qualidade ISO 9001 e melhoria de processos para empresas em transformação.</p>
+        <a href="/parceiros/thoth" class="link-prop">Conexão com propósito →</a>
+      </div>
+      <div class="card-parceiro reveal">
+        <div class="icone-maleta"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#152438" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <span class="num">02</span>
+        <span class="cat">Desenvolvimento humano</span>
+        <h3>Opte+</h3>
+        <p>Desenvolvimento de soft skills e essential skills nos profissionais do mundo corporativo, desde a primeira liderança até a gestão e a alta gestão.</p>
+        <a href="/parceiros/opte" class="link-prop">Conexão com propósito →</a>
+      </div>
+      <div class="card-parceiro reveal">
+        <div class="icone-maleta"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#152438" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <span class="num">03</span>
+        <span class="cat">Educação e ciência</span>
+        <h3>Instituto Educacional Futuro da Ciência</h3>
+        <p>Organização sem fins lucrativos formada por cientistas, educadores e empreendedores, com dois pilares: pesquisa científica e educação para as próximas gerações.</p>
+        <a href="/parceiros/iefc" class="link-prop">Conexão com propósito →</a>
+      </div>
+      <div class="card-parceiro reveal">
+        <div class="icone-maleta"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#152438" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <span class="num">04</span>
+        <span class="cat">Tecnologia e gestão</span>
+        <h3>Boomerang</h3>
+        <p>Suíte de sistemas integrados: CRM, gestão de ativos, projetos, chamados, OKR, compras e gestão de escolas em uma só plataforma.</p>
+        <a href="/parceiros/boomerang" class="link-prop">Conexão com propósito →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container reveal">
+    <h2>Pronto para começar?</h2>
+    <a href="#contato" class="btn claro">Fale conosco →</a>
+  </div>
+</section>
+
+<footer id="contato">
+  <div class="container">
+    <div class="linha">
+      <span class="marca" style="color:var(--branco)">Attrium<span style="color:var(--dourado)">.</span></span>
+      <a href="mailto:contato@attriumsolucoes.com.br">contato@attriumsolucoes.com.br</a>
+    </div>
+    <p class="fina">© 2026 Attrium Soluções. Página de referência recriada em HTML para base de novo site.</p>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('on')),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.getElementById('btn-menu').addEventListener('click',()=>document.getElementById('menu').classList.toggle('aberto'));
+</script>
+</body>
+</html>
