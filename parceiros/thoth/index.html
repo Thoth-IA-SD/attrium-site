@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thoth Consultoria — Attrium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DESIGN SYSTEM ATTRIUM — paleta oficial
+   Usar estas variáveis em todo o arquivo. Não criar tons novos.
+   ============================================================ */
+:root{
+  --fundo-claro:#F7F8FA; --branco:#FFFFFF; --azul-marinho:#152438;
+  --dourado:#E2A645; --texto:#525D6E; --texto-claro:#D1D5DB;
+  --raio-card:16px; --raio-botao:999px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--fundo-claro);color:var(--texto);line-height:1.7;font-size:17px}
+h1,h2,h3{font-family:'Sora',sans-serif;color:var(--azul-marinho);line-height:1.15}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+.tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--dourado);margin-bottom:20px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--dourado);color:var(--azul-marinho);font-weight:600;text-decoration:none;padding:14px 28px;border-radius:var(--raio-botao);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(226,166,69,.35)}
+.btn.claro{background:var(--branco)}
+header{position:fixed;top:0;left:0;right:0;background:rgba(247,248,250,.92);backdrop-filter:blur(8px);z-index:100;border-bottom:1px solid rgba(21,36,56,.06)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;flex-wrap:wrap;gap:12px}
+.marca{font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:var(--azul-marinho);text-decoration:none}
+.marca span{color:var(--dourado)}
+.voltar{color:var(--texto);text-decoration:none;font-size:15px}
+.voltar:hover{color:var(--azul-marinho)}
+.hero{padding:180px 0 96px}
+.hero h1{font-size:clamp(34px,5vw,56px);font-weight:800;max-width:840px;margin-bottom:24px}
+.hero p{font-size:20px;max-width:680px}
+.dores{background:var(--azul-marinho)}
+.dores h2{color:var(--branco);font-size:clamp(28px,4vw,40px);margin-bottom:16px}
+.dores .sub{color:var(--texto-claro);max-width:640px;margin-bottom:48px}
+.grid-dores{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.card-dor{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--raio-card);padding:32px;box-shadow:0 4px 20px rgba(0,0,0,.15)}
+.card-dor .num{font-family:'Sora',sans-serif;font-weight:700;color:var(--dourado);font-size:15px;letter-spacing:.1em}
+.card-dor h3{color:var(--branco);font-size:20px;margin:12px 0}
+.card-dor p{color:var(--texto-claro);font-size:15px}
+.beneficios li{list-style:none;display:flex;gap:16px;margin-bottom:24px;font-size:18px}
+.beneficios li::before{content:"—";color:var(--dourado);font-weight:700}
+.beneficios strong{color:var(--azul-marinho)}
+.cta{background:var(--azul-marinho);text-align:center}
+.cta h2{color:var(--branco);font-size:clamp(30px,4vw,44px)}
+.cta .destaque{color:var(--dourado);font-family:'Sora',sans-serif;font-weight:700;font-size:22px;margin:16px 0}
+.cta p{color:var(--texto-claro);max-width:560px;margin:0 auto 32px}
+footer{background:var(--azul-marinho);color:var(--texto-claro);padding:40px 0;border-top:1px solid rgba(255,255,255,.08)}
+footer .linha{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+footer a{color:var(--texto-claro)}
+.fina{font-size:13px;opacity:.7;margin-top:24px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+.reveal.on{opacity:1;transform:none}
+@media(max-width:720px){.grid-dores{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav container">
+    <a href="/" class="marca">Attrium<span>.</span></a>
+    <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+      <a href="/" class="voltar">← Voltar aos parceiros</a>
+      <a href="/contato?origem=thoth" class="btn">Fale com a gente →</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="tag">Parceiro estratégico</span>
+    <h1>Thoth Consultoria — parceira para transformar desafios em resultados</h1>
+    <p>Muitas empresas trabalham duro, investem e se esforçam — mas os resultados não acompanham. A Thoth Consultoria existe para mudar isso. Somos uma consultoria empresarial focada em resultados tangíveis, clareza operacional e crescimento sustentável, com metodologia Lean Six Sigma e uma promessa simples: <strong style="color:var(--azul-marinho)">resultados visíveis em 90 dias</strong>.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="container reveal">
+    <span class="tag">O que a Thoth faz</span>
+    <h2 style="font-size:clamp(26px,3.5vw,36px);margin-bottom:24px">Transformar desafios de negócio em organizações de alta performance</h2>
+    <p style="max-width:760px;margin-bottom:20px">A Thoth transforma desafios de negócio em organizações de alta performance. Nosso trabalho começa com um diagnóstico objetivo da sua operação — identificando onde o dinheiro está vazando, por que os indicadores não evoluem e o que trava o crescimento. A partir daí, estruturamos melhorias de processos, capacitamos times e implementamos soluções que geram resultado real, não relatório de gaveta.</p>
+    <p style="max-width:760px">Atuamos em consultoria de processos e melhoria contínua (Lean Six Sigma), gestão da cadeia de suprimentos, desenvolvimento organizacional, compliance, estratégia de mercado e formação de líderes — sempre com foco na aplicação imediata no dia a dia da empresa.</p>
+  </div>
+</section>
+
+<section class="dores">
+  <div class="container">
+    <span class="tag">Quais dores a Thoth resolve</span>
+    <h2>Se a sua empresa vive algum destes cenários, é exatamente aqui que entramos.</h2>
+    <div class="grid-dores" style="margin-top:48px">
+      <div class="card-dor reveal"><span class="num">01</span><h3>Dinheiro que some sem explicação.</h3><p>Retrabalho, refugo, espera e superprodução são desperdícios que você sabe que existem, mas não consegue quantificar. Nós quantificamos — e eliminamos.</p></div>
+      <div class="card-dor reveal"><span class="num">02</span><h3>Indicadores estagnados.</h3><p>Produtividade, qualidade, prazo e custo que não saem do lugar, mesmo com esforço e investimento constantes. Nós destravamos.</p></div>
+      <div class="card-dor reveal"><span class="num">03</span><h3>Problemas que sempre voltam.</h3><p>O mesmo defeito, a mesma falha, o mesmo atraso. A dor não é o problema — é a recorrência. Nós atacamos a causa raiz, não o sintoma.</p></div>
+      <div class="card-dor reveal"><span class="num">04</span><h3>Processos que não são confiáveis.</h3><p>Quando a operação não entrega de forma consistente, o cliente percebe e o contrato se perde. Nós construímos capabilidade.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container reveal">
+    <span class="tag">Benefícios para a sua empresa</span>
+    <ul class="beneficios" style="margin-top:24px">
+      <li><span><strong>Clareza:</strong> um raio-X objetivo da operação, com prioridades claras — sem achismo.</span></li>
+      <li><span><strong>Resultados em 90 dias:</strong> melhorias que aparecem no indicador, não só no papel.</span></li>
+      <li><span><strong>Time capacitado:</strong> sua equipe aprende a resolver problemas sozinha, com método.</span></li>
+      <li><span><strong>Crescimento sustentável:</strong> organização preparada para prosperar continuamente, não apenas para o próximo trimestre.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container reveal">
+    <h2>Vamos conversar?</h2>
+    <p class="destaque">Diagnóstico gratuito de 45 minutos</p>
+    <p>O primeiro passo é simples: um diagnóstico gratuito com um dos nossos sócios. Sem compromisso — apenas clareza sobre o próximo passo da sua empresa.</p>
+    <a href="/contato?origem=thoth" class="btn claro">Fale com a gente →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="linha">
+      <span class="marca" style="color:var(--branco)">Attrium<span style="color:var(--dourado)">.</span></span>
+      <a href="mailto:contato@attriumsolucoes.com.br">contato@attriumsolucoes.com.br</a>
+    </div>
+    <p class="fina">© 2026 Attrium Soluções — página de parceiro recriada em HTML para base de novo site.</p>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('on')),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
