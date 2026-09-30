@@ -28,11 +28,21 @@ section{padding:96px 0}
 .btn.claro{background:var(--branco)}
 header{position:fixed;top:0;left:0;right:0;background:rgba(247,248,250,.92);backdrop-filter:blur(8px);z-index:100;border-bottom:1px solid rgba(21,36,56,.06)}
 .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;flex-wrap:wrap;gap:12px}
-.marca{font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:var(--azul-marinho);text-decoration:none}
-.marca span{color:var(--dourado)}
+.logo-marca {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+.logo-img {
+  height: 52px;
+  width: auto;
+  max-width: 190px;
+  object-fit: contain;
+  display: block;
+}
 .voltar{color:var(--texto);text-decoration:none;font-size:15px}
 .voltar:hover{color:var(--azul-marinho)}
-.hero{padding:180px 0 96px}
+.hero{padding:160px 0 80px}
 .hero h1{font-size:clamp(34px,5vw,56px);font-weight:800;max-width:840px;margin-bottom:24px}
 .hero p{font-size:20px;max-width:680px}
 .dores{background:var(--azul-marinho)}
@@ -54,7 +64,7 @@ footer{background:var(--azul-marinho);color:var(--texto-claro);padding:40px 0;bo
 footer .linha{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
 footer a{color:var(--texto-claro)}
 .fina{font-size:13px;opacity:.7;margin-top:24px}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+.reveal{opacity:1;transform:none}
 .reveal.on{opacity:1;transform:none}
 @media(max-width:720px){.grid-dores{grid-template-columns:1fr}}
 </style>
@@ -62,17 +72,24 @@ footer a{color:var(--texto-claro)}
 <body>
 <header>
   <div class="nav container">
-    <a href="/" class="marca">Attrium<span>.</span></a>
+    <a href="/" class="logo-marca" aria-label="Attrium Soluções Corporativas">
+      <img src="../../assets/logo-attrium.png" alt="Attrium Soluções Corporativas" class="logo-img">
+    </a>
     <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
-      <a href="/" class="voltar">← Voltar aos parceiros</a>
-      <a href="/contato?origem=thoth" class="btn">Fale com a gente →</a>
+      <a href="/#parceiros" class="voltar">← Voltar aos parceiros</a>
+      <a href="/#contato" class="btn">Fale com a gente →</a>
     </div>
   </div>
 </header>
 
 <section class="hero">
   <div class="container">
-    <span class="tag">Parceiro estratégico</span>
+    <div style="display:inline-flex; align-items:center; gap:16px; background:#fff; padding:12px 24px; border-radius:18px; margin-bottom:28px; box-shadow:0 4px 16px rgba(15,32,53,0.06); border:1px solid rgba(15,32,53,0.06);">
+      <img src="../../assets/logo-attrium.png" alt="Attrium" style="height:36px; width:auto; display:block;">
+      <span style="color:var(--dourado); font-weight:700; font-size:16px; user-select:none;">+</span>
+      <img src="../../assets/logo-thoth.png" alt="Thoth Consultoria" style="height:38px; width:auto; display:block;">
+    </div>
+    <div><span class="tag">Parceiro estratégico</span></div>
     <h1>Thoth Consultoria — parceira para transformar desafios em resultados</h1>
     <p>Muitas empresas trabalham duro, investem e se esforçam — mas os resultados não acompanham. A Thoth Consultoria existe para mudar isso. Somos uma consultoria empresarial focada em resultados tangíveis, clareza operacional e crescimento sustentável, com metodologia Lean Six Sigma e uma promessa simples: <strong style="color:var(--azul-marinho)">resultados visíveis em 90 dias</strong>.</p>
   </div>
@@ -124,10 +141,12 @@ footer a{color:var(--texto-claro)}
 <footer>
   <div class="container">
     <div class="linha">
-      <span class="marca" style="color:var(--branco)">Attrium<span style="color:var(--dourado)">.</span></span>
+      <a href="/" class="logo-marca" aria-label="Attrium Soluções Corporativas">
+        <img src="../../assets/logo-attrium.png" alt="Attrium Soluções Corporativas" style="height:44px; width:auto; filter:brightness(0) invert(1); display:block;">
+      </a>
       <a href="mailto:contato@attriumsolucoes.com.br">contato@attriumsolucoes.com.br</a>
     </div>
-    <p class="fina">© 2026 Attrium Soluções — página de parceiro recriada em HTML para base de novo site.</p>
+    <p class="fina">© 2026 Attrium Soluções Corporativas. Todos os direitos reservados.</p>
   </div>
 </footer>
 

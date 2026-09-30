@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fale Conosco — Attrium Soluções Corporativas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --fundo-claro: #F8F9FA;
+  --branco: #FFFFFF;
+  --azul-marinho: #0F2035;
+  --dourado: #DE9B35;
+  --dourado-hover: #C98827;
+  --texto: #526071;
+  --borda: rgba(15, 32, 53, 0.08);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--fundo-claro);
+  color: var(--texto);
+  line-height: 1.6;
+}
+header {
+  background: rgba(248, 249, 250, 0.95);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--borda);
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+.logo-img {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+.voltar {
+  color: var(--texto);
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+.voltar:hover {
+  color: var(--azul-marinho);
+}
+main {
+  padding: 140px 0 80px;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+}
+.card-formulario {
+  background: var(--branco);
+  max-width: 640px;
+  margin: 0 auto;
+  border-radius: 32px;
+  padding: clamp(32px, 5vw, 56px);
+  box-shadow: 0 20px 60px rgba(15, 32, 53, 0.08);
+  border: 1px solid var(--borda);
+}
+.tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--dourado);
+  margin-bottom: 12px;
+}
+h1 {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 800;
+  color: var(--azul-marinho);
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+.desc {
+  font-size: 16px;
+  color: var(--texto);
+  margin-bottom: 32px;
+}
+.form-grupo {
+  margin-bottom: 20px;
+}
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--azul-marinho);
+  margin-bottom: 8px;
+}
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 14px 18px;
+  background: #F8F9FA;
+  border: 1px solid rgba(15, 32, 53, 0.12);
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--azul-marinho);
+  outline: none;
+  transition: all 0.2s;
+}
+.form-input:focus, .form-textarea:focus {
+  background: var(--branco);
+  border-color: var(--dourado);
+  box-shadow: 0 0 0 3px rgba(222, 155, 53, 0.15);
+}
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 580px) {
+  .form-grid-2 { grid-template-columns: 1fr; gap: 0; }
+}
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+.btn-enviar {
+  width: 100%;
+  padding: 18px 28px;
+  background: var(--dourado);
+  color: var(--azul-marinho);
+  border: none;
+  border-radius: 999px;
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s;
+  box-shadow: 0 8px 24px rgba(222, 155, 53, 0.35);
+  margin-top: 12px;
+}
+.btn-enviar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(222, 155, 53, 0.45);
+}
+.box-sucesso {
+  display: none;
+  text-align: center;
+  padding: 40px 10px;
+}
+.icone-sucesso {
+  width: 72px;
+  height: 72px;
+  background: #EFF8F2;
+  color: #2E7D32;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+footer {
+  background: var(--azul-marinho);
+  color: #D1D5DB;
+  padding: 36px 0;
+}
+footer .linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+footer a { color: #D1D5DB; text-decoration: none; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="/" aria-label="Attrium Soluções Corporativas">
+      <img src="../assets/logo-attrium.png" alt="Attrium" class="logo-img">
+    </a>
+    <a href="/" class="voltar">
+      ← Voltar para o início
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="container" style="width: 100%;">
+    <div class="card-formulario">
+      <div id="form-container">
+        <span class="tag">Fale conosco</span>
+        <h1>Vamos construir o próximo passo.</h1>
+        <p class="desc">Preencha os campos abaixo e nosso time entrará em contato com você.</p>
+        
+        <form id="form-contato">
+          <div class="form-grupo">
+            <label class="form-label" for="campo-nome">Nome completo *</label>
+            <input type="text" id="campo-nome" name="nome" class="form-input" placeholder="Seu nome completo" required>
+          </div>
+          
+          <div class="form-grid-2">
+            <div class="form-grupo">
+              <label class="form-label" for="campo-fone">Telefone / WhatsApp *</label>
+              <input type="tel" id="campo-fone" name="fone" class="form-input" placeholder="(11) 99999-9999" required>
+            </div>
+            <div class="form-grupo">
+              <label class="form-label" for="campo-email">E-mail corporativo *</label>
+              <input type="email" id="campo-email" name="email" class="form-input" placeholder="seu@email.com" required>
+            </div>
+          </div>
+
+          <div class="form-grupo">
+            <label class="form-label" for="campo-empresa">Nome da empresa *</label>
+            <input type="text" id="campo-empresa" name="empresa" class="form-input" placeholder="Nome da sua empresa" required>
+          </div>
+
+          <div class="form-grupo">
+            <label class="form-label" for="campo-mensagem">Mensagem *</label>
+            <textarea id="campo-mensagem" name="mensagem" class="form-textarea" placeholder="Como podemos ajudar o seu negócio?" rows="4" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-enviar">
+            Enviar mensagem
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          </button>
+        </form>
+      </div>
+
+      <div id="sucesso-container" class="box-sucesso">
+        <div class="icone-sucesso">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h1>Mensagem enviada com sucesso!</h1>
+        <p class="desc">Obrigado pelo contato! Nossa equipe retornará para você em breve.</p>
+        <a href="/" class="btn-enviar" style="max-width: 220px; margin: 0 auto; text-decoration: none;">Voltar ao início</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container linha">
+    <a href="/">
+      <img src="../assets/logo-attrium.png" alt="Attrium" style="height: 38px; filter: brightness(0) invert(1);">
+    </a>
+    <span style="font-size: 13px;">© 2026 Attrium Soluções Corporativas. Todos os direitos reservados.</span>
+    <a href="mailto:contato@attriumsolucoes.com.br">contato@attriumsolucoes.com.br</a>
+  </div>
+</footer>
+
+<script>
+const inputFone = document.getElementById('campo-fone');
+inputFone.addEventListener('input', (e) => {
+  let v = e.target.value.replace(/\D/g, '');
+  if (v.length > 11) v = v.slice(0, 11);
+  if (v.length > 10) {
+    e.target.value = `(${v.slice(0, 2)}) ${v.slice(2, 7)}-${v.slice(7)}`;
+  } else if (v.length > 6) {
+    e.target.value = `(${v.slice(0, 2)}) ${v.slice(2, 6)}-${v.slice(6)}`;
+  } else if (v.length > 2) {
+    e.target.value = `(${v.slice(0, 2)}) ${v.slice(2)}`;
+  } else {
+    e.target.value = v;
+  }
+});
+
+const form = document.getElementById('form-contato');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const nome = document.getElementById('campo-nome').value.trim();
+  const fone = document.getElementById('campo-fone').value.trim();
+  const email = document.getElementById('campo-email').value.trim();
+  const empresa = document.getElementById('campo-empresa').value.trim();
+  const mensagem = document.getElementById('campo-mensagem').value.trim();
+
+  const assunto = encodeURIComponent(`Contato Site Attrium - ${nome} (${empresa})`);
+  const corpo = encodeURIComponent(
+    `Nome: ${nome}\n` +
+    `Telefone: ${fone}\n` +
+    `E-mail: ${email}\n` +
+    `Empresa: ${empresa}\n\n` +
+    `Mensagem:\n${mensagem}`
+  );
+
+  document.getElementById('form-container').style.display = 'none';
+  document.getElementById('sucesso-container').style.display = 'block';
+
+  window.open(`mailto:contato@attriumsolucoes.com.br?subject=${assunto}&body=${corpo}`, '_blank');
+});
+</script>
+</body>
+</html>
