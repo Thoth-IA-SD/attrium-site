@@ -15,8 +15,8 @@
   --fundo-claro: #F8F9FA;
   --branco: #FFFFFF;
   --azul-marinho: #0F2035;
-  --dourado: #DE9B35;
-  --dourado-hover: #C98827;
+  --dourado: #E65100;
+  --dourado-hover: #BF360C;
   --laranja-destaque: #E65100;
   --laranja-destaque-claro: #FF8533;
   --texto: #526071;
@@ -141,19 +141,21 @@ header {
 
 .menu-btn {
   background: var(--dourado) !important;
-  color: var(--azul-marinho) !important;
+  color: #FFFFFF !important;
   font-weight: 600 !important;
   padding: 10px 22px !important;
   border-radius: var(--raio-botao) !important;
   display: inline-flex !important;
   align-items: center !important;
   gap: 8px !important;
-  transition: transform 0.2s, box-shadow 0.2s !important;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s !important;
+  box-shadow: 0 4px 14px rgba(230, 81, 0, 0.3) !important;
 }
 
 .menu-btn:hover {
+  background: var(--dourado-hover) !important;
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(222, 155, 53, 0.3);
+  box-shadow: 0 6px 18px rgba(230, 81, 0, 0.45) !important;
 }
 
 #btn-menu {
@@ -245,19 +247,20 @@ header {
   align-items: center;
   gap: 10px;
   background: var(--dourado);
-  color: var(--azul-marinho);
+  color: #FFFFFF;
   font-weight: 600;
   font-size: 16px;
   text-decoration: none;
   padding: 15px 30px;
   border-radius: var(--raio-botao);
   transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+  box-shadow: 0 4px 16px rgba(230, 81, 0, 0.3);
 }
 
 .btn-conversar:hover {
   background: var(--dourado-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(222, 155, 53, 0.35);
+  box-shadow: 0 8px 24px rgba(230, 81, 0, 0.45);
 }
 
 .btn-link-solucoes {
@@ -653,25 +656,26 @@ section {
   height: 44px;
   border-radius: 50%;
   background: var(--dourado);
-  color: var(--azul-marinho);
+  color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
-  box-shadow: 0 4px 12px rgba(222, 155, 53, 0.3);
+  box-shadow: 0 4px 12px rgba(230, 81, 0, 0.35);
 }
 
 .btn-card-acao:hover {
+  background: var(--dourado-hover);
   transform: scale(1.08);
-  box-shadow: 0 6px 16px rgba(222, 155, 53, 0.45);
+  box-shadow: 0 6px 18px rgba(230, 81, 0, 0.5);
 }
 
 .btn-card-acao svg {
   width: 16px;
   height: 16px;
-  stroke: var(--azul-marinho);
-  stroke-width: 2.5;
+  stroke: #FFFFFF;
+  stroke-width: 2.6;
 }
 
 /* ============================================================
@@ -1078,7 +1082,7 @@ footer .linha {
   width: 100%;
   padding: 16px 24px;
   background: var(--dourado);
-  color: var(--azul-marinho);
+  color: #FFFFFF;
   border: none;
   border-radius: 999px;
   font-family: 'Sora', sans-serif;
@@ -1090,13 +1094,14 @@ footer .linha {
   justify-content: center;
   gap: 10px;
   transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
-  box-shadow: 0 8px 24px rgba(222, 155, 53, 0.35);
+  box-shadow: 0 8px 24px rgba(230, 81, 0, 0.35);
   margin-top: 10px;
 }
 
 .btn-form-enviar:hover {
+  background: var(--dourado-hover);
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(222, 155, 53, 0.45);
+  box-shadow: 0 12px 28px rgba(230, 81, 0, 0.45);
 }
 
 .modal-sucesso {

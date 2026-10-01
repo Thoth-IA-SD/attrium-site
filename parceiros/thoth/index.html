@@ -13,7 +13,7 @@
    ============================================================ */
 :root{
   --fundo-claro:#F7F8FA; --branco:#FFFFFF; --azul-marinho:#152438;
-  --dourado:#E2A645; --texto:#525D6E; --texto-claro:#D1D5DB;
+  --dourado:#E65100; --dourado-hover:#BF360C; --texto:#525D6E; --texto-claro:#D1D5DB;
   --raio-card:16px; --raio-botao:999px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -23,9 +23,9 @@ h1,h2,h3{font-family:'Sora',sans-serif;color:var(--azul-marinho);line-height:1.1
 .container{max-width:1100px;margin:0 auto;padding:0 24px}
 section{padding:96px 0}
 .tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--dourado);margin-bottom:20px}
-.btn{display:inline-flex;align-items:center;gap:10px;background:var(--dourado);color:var(--azul-marinho);font-weight:600;text-decoration:none;padding:14px 28px;border-radius:var(--raio-botao);transition:transform .2s,box-shadow .2s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(226,166,69,.35)}
-.btn.claro{background:var(--branco)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--dourado);color:#FFFFFF;font-weight:600;text-decoration:none;padding:14px 28px;border-radius:var(--raio-botao);transition:transform .2s,box-shadow .2s,background-color .2s;box-shadow:0 4px 14px rgba(230,81,0,.3)}
+.btn:hover{background:var(--dourado-hover);transform:translateY(-2px);box-shadow:0 8px 24px rgba(230,81,0,.45)}
+.btn.claro{background:var(--branco);color:var(--azul-marinho)}
 header{position:fixed;top:0;left:0;right:0;background:rgba(247,248,250,.92);backdrop-filter:blur(8px);z-index:100;border-bottom:1px solid rgba(21,36,56,.06)}
 .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;flex-wrap:wrap;gap:12px}
 .logo-marca {
