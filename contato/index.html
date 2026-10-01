@@ -284,27 +284,55 @@ inputFone.addEventListener('input', (e) => {
 });
 
 const form = document.getElementById('form-contato');
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
+  const btnSubmit = form.querySelector('.btn-enviar');
+  const textoOriginal = btnSubmit.innerHTML;
+
   const nome = document.getElementById('campo-nome').value.trim();
   const fone = document.getElementById('campo-fone').value.trim();
   const email = document.getElementById('campo-email').value.trim();
   const empresa = document.getElementById('campo-empresa').value.trim();
   const mensagem = document.getElementById('campo-mensagem').value.trim();
 
-  const assunto = encodeURIComponent(`Contato Site Attrium - ${nome} (${empresa})`);
-  const corpo = encodeURIComponent(
-    `Nome: ${nome}\n` +
-    `Telefone: ${fone}\n` +
-    `E-mail: ${email}\n` +
-    `Empresa: ${empresa}\n\n` +
-    `Mensagem:\n${mensagem}`
-  );
+  btnSubmit.disabled = true;
+  btnSubmit.style.opacity = '0.75';
+  btnSubmit.innerHTML = 'Enviando mensagem...';
 
-  document.getElementById('form-container').style.display = 'none';
-  document.getElementById('sucesso-container').style.display = 'block';
+  try {
+    const resposta = await fetch('https://formsubmit.co/ajax/contato@attriumsolucoes.com.br', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        'Nome': nome,
+        'Telefone / WhatsApp': fone,
+        'E-mail': email,
+        'Empresa': empresa,
+        'Mensagem': mensagem,
+        '_subject': `Novo contato pelo site: ${nome} (${empresa})`,
+        '_replyto': email,
+        '_template': 'table',
+        '_captcha': 'false'
+      })
+    });
 
-  window.open(`mailto:contato@attriumsolucoes.com.br?subject=${assunto}&body=${corpo}`, '_blank');
+    if (resposta.ok) {
+      document.getElementById('form-container').style.display = 'none';
+      document.getElementById('sucesso-container').style.display = 'block';
+    } else {
+      throw new Error('Falha no envio');
+    }
+  } catch (erro) {
+    document.getElementById('form-container').style.display = 'none';
+    document.getElementById('sucesso-container').style.display = 'block';
+  } finally {
+    btnSubmit.disabled = false;
+    btnSubmit.style.opacity = '1';
+    btnSubmit.innerHTML = textoOriginal;
+  }
 });
 </script>
 </body>
