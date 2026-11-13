@@ -466,6 +466,15 @@ section {
   gap: 28px;
 }
 
+@media (min-width: 900px) {
+  .card-parceiro:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 540px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
 .card-parceiro {
   position: relative;
   background: var(--branco);
@@ -1242,7 +1251,7 @@ footer .linha {
     <div class="container">
       <span class="tag">Quem caminha com a gente</span>
       <h2>Parcerias que <span class="ouro">ampliam</span> possibilidades</h2>
-      <p class="apoio">Quatro especialidades, uma conexão com propósito.</p>
+      <p class="apoio">Cinco especialidades, uma conexão com propósito.</p>
       <div class="grid-parceiros">
         <!-- CARD 01: THOTH -->
         <div class="card-parceiro reveal">
@@ -1375,9 +1384,41 @@ footer .linha {
             </a>
           </div>
         </div>
+
+        <!-- CARD 05: LUMINA -->
+        <div class="card-parceiro reveal">
+          <div class="card-parceiro-header">
+            <span class="num">05</span>
+            <div class="icone-categoria">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-logo-box cobranding">
+            <img src="assets/logo-attrium.png" alt="Attrium" class="card-logo-attrium">
+            <span class="card-logo-conector" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </span>
+            <img src="assets/logo-lumina.png" alt="Lumina Gestão Escolar" class="card-logo-img" style="max-height:42px; border-radius:8px;">
+          </div>
+          <span class="cat">Gestão escolar inteligente</span>
+          <h3>Lumina</h3>
+          <p>Sistema de gestão escolar completo e integrado: matrícula online, diário de classe digital, inteligência artificial preditiva anti-evasão, financeiro e portal para famílias.</p>
+          <div class="card-parceiro-rodape">
+            <span class="selo-proposito">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Conexão com propósito
+            </span>
+            <a href="parceiros/lumina/" class="btn-card-acao" aria-label="Acessar Lumina Gestão Escolar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </div>
+        </div>
       </div>
 
-      <!-- CITAÇÃO DAVID ALLEN LOGO ABAIXO DOS 4 PARCEIROS -->
+      <!-- CITAÇÃO DAVID ALLEN LOGO ABAIXO DOS PARCEIROS -->
       <div class="bloco-citacao">
         <div class="card-citacao">
           <img src="assets/citacao-david-allen.png" alt="Sua mente foi feita para ter ideias, não para guardá-las - David Allen" class="img-citacao" loading="eager" decoding="sync">

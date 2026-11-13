@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumina — Sistema de Gestão Escolar Inteligente | Parceiro Attrium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --fundo-claro: #F8F9FA;
+  --branco: #FFFFFF;
+  --azul-marinho: #0F2035;
+  --azul-escuro: #091422;
+  --dourado: #E65100;
+  --dourado-hover: #BF360C;
+  --laranja-lumina: #f07528;
+  --texto: #526071;
+  --texto-claro: #D1D5DB;
+  --raio-card: 22px;
+  --raio-botao: 999px;
+  --borda: rgba(15, 32, 53, 0.08);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--fundo-claro);
+  color: var(--texto);
+  line-height: 1.7;
+  font-size: 17px;
+}
+h1, h2, h3, h4 {
+  font-family: 'Sora', sans-serif;
+  color: var(--azul-marinho);
+  line-height: 1.2;
+}
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+section {
+  padding: 80px 0;
+}
+.tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--dourado);
+  margin-bottom: 16px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--dourado);
+  color: #FFFFFF;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: var(--raio-botao);
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  transition: transform .2s, box-shadow .2s, background-color .2s;
+  box-shadow: 0 6px 20px rgba(230, 81, 0, .3);
+}
+.btn:hover {
+  background: var(--dourado-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(230, 81, 0, .45);
+}
+.btn.claro {
+  background: var(--branco);
+  color: var(--azul-marinho);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .15);
+}
+.btn.outline {
+  background: transparent;
+  border: 1.5px solid var(--azul-marinho);
+  color: var(--azul-marinho);
+  box-shadow: none;
+}
+.btn.outline:hover {
+  background: var(--azul-marinho);
+  color: var(--branco);
+}
+
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: rgba(248, 249, 250, 0.94);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  border-bottom: 1px solid var(--borda);
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.logo-img {
+  height: 78px;
+  width: auto;
+  max-width: 280px;
+  display: block;
+}
+.voltar {
+  color: var(--texto);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+.voltar:hover {
+  color: var(--azul-marinho);
+}
+
+.hero {
+  padding: 150px 0 70px;
+}
+.hero-tag-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--branco);
+  padding: 10px 22px;
+  border-radius: 18px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 18px rgba(15, 32, 53, 0.05);
+  border: 1px solid var(--borda);
+}
+.hero-tag-box img {
+  height: 34px;
+  width: auto;
+  object-fit: contain;
+}
+.hero-tag-box .conector {
+  color: var(--dourado);
+  font-weight: 700;
+  font-size: 16px;
+}
+.hero h1 {
+  font-size: clamp(34px, 5vw, 54px);
+  font-weight: 800;
+  max-width: 880px;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+.hero h1 .laranja {
+  color: var(--dourado);
+}
+.hero p.lead {
+  font-size: 20px;
+  line-height: 1.6;
+  max-width: 840px;
+  color: #3B4858;
+  margin-bottom: 32px;
+}
+.hero-acoes {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.box-destaque {
+  background: var(--branco);
+  border-left: 5px solid var(--dourado);
+  border-radius: 18px;
+  padding: 32px 36px;
+  box-shadow: 0 8px 26px rgba(15, 32, 53, 0.05);
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  color: var(--azul-marinho);
+  font-size: 21px;
+  line-height: 1.4;
+  margin: 32px 0 40px;
+}
+
+/* CARDS DE DORES RESOLVIDAS */
+.secao-dores {
+  background: var(--azul-marinho);
+  color: var(--branco);
+  border-radius: 36px;
+  padding: clamp(48px, 6vw, 76px) clamp(28px, 5vw, 60px);
+  margin: 30px 0;
+}
+.secao-dores h2 {
+  color: var(--branco);
+  font-size: clamp(28px, 4vw, 42px);
+  margin-bottom: 16px;
+}
+.secao-dores p.sub {
+  color: var(--texto-claro);
+  max-width: 720px;
+  font-size: 18px;
+  margin-bottom: 44px;
+}
+.grid-dores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.card-dor {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--raio-card);
+  padding: 30px 26px;
+  transition: transform 0.2s, background 0.2s;
+}
+.card-dor:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.09);
+}
+.card-dor .numero-dor {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--dourado);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.card-dor h3 {
+  color: var(--branco);
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+.card-dor p {
+  color: var(--texto-claro);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* PILARES DO ECOSSISTEMA */
+.grid-pilares {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 36px;
+}
+.card-pilar {
+  background: var(--branco);
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--borda);
+  box-shadow: 0 6px 24px rgba(15, 32, 53, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.card-pilar:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(15, 32, 53, 0.09);
+}
+.card-pilar-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+.card-pilar-corpo {
+  padding: 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card-pilar-tag {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--dourado);
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
+}
+.card-pilar h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+.card-pilar p {
+  font-size: 15px;
+  color: var(--texto);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.card-pilar ul {
+  list-style: none;
+  margin-top: auto;
+  border-top: 1px solid var(--borda);
+  padding-top: 16px;
+}
+.card-pilar li {
+  font-size: 14px;
+  color: var(--azul-marinho);
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-pilar li svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--dourado);
+  flex-shrink: 0;
+}
+
+/* GRID DE MÓDULOS */
+.grid-modulos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+.card-modulo {
+  background: var(--branco);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid var(--borda);
+  box-shadow: 0 4px 18px rgba(15, 32, 53, 0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.card-modulo:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(15, 32, 53, 0.08);
+}
+.badge-modulo {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(230, 81, 0, 0.1);
+  color: var(--dourado);
+  margin-bottom: 14px;
+}
+.card-modulo h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.card-modulo p.funcao {
+  font-size: 15px;
+  color: #3B4858;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+.card-modulo .dor {
+  font-size: 13px;
+  color: var(--texto);
+  background: #F8F9FA;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border-left: 3px solid var(--dourado);
+  margin-top: auto;
+  line-height: 1.5;
+}
+
+/* MÉTRICAS / NÚMEROS */
+.grid-metricas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 40px 0;
+}
+.card-metrica {
+  background: var(--branco);
+  border-radius: 20px;
+  padding: 28px 24px;
+  text-align: center;
+  border: 1px solid var(--borda);
+  box-shadow: 0 4px 20px rgba(15, 32, 53, 0.04);
+}
+.card-metrica .num {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(34px, 4vw, 44px);
+  font-weight: 800;
+  color: var(--dourado);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.card-metrica .legenda {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--azul-marinho);
+}
+
+/* BANNER SHOWCASE */
+.showcase-banner {
+  background: var(--branco);
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid var(--borda);
+  box-shadow: 0 12px 40px rgba(15, 32, 53, 0.08);
+  margin: 30px 0;
+}
+.showcase-banner img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: cover;
+  display: block;
+}
+.showcase-banner-rodape {
+  padding: 24px 32px;
+  background: var(--branco);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  border-top: 1px solid var(--borda);
+}
+
+/* CTA FINAL */
+.secao-cta-final {
+  background: linear-gradient(135deg, var(--azul-marinho) 0%, var(--azul-escuro) 100%);
+  color: var(--branco);
+  border-radius: 36px;
+  padding: clamp(48px, 6vw, 80px) clamp(24px, 5vw, 60px);
+  text-align: center;
+  margin: 40px 0 80px;
+}
+.secao-cta-final h2 {
+  color: var(--branco);
+  font-size: clamp(30px, 4.5vw, 46px);
+  max-width: 840px;
+  margin: 12px auto 20px;
+}
+.secao-cta-final p {
+  color: var(--texto-claro);
+  max-width: 680px;
+  margin: 0 auto 36px;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+/* FOOTER */
+footer {
+  background: var(--azul-marinho);
+  color: var(--texto-claro);
+  padding: 40px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+footer .linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+footer a {
+  color: var(--texto-claro);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--branco);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1024px) {
+  .grid-dores, .grid-pilares, .grid-modulos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-metricas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .grid-dores, .grid-pilares, .grid-modulos, .grid-metricas {
+    grid-template-columns: 1fr;
+  }
+  section {
+    padding: 60px 0;
+  }
+  .hero {
+    padding: 120px 0 50px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav">
+      <a href="../../" aria-label="Attrium Soluções Corporativas">
+        <img src="../../assets/logo-attrium.png" alt="Attrium Soluções Corporativas" class="logo-img">
+      </a>
+      <div style="display:flex; align-items:center; gap:20px;">
+        <a href="../../" class="voltar">← Voltar para o início</a>
+        <a href="../../#contato" class="btn" style="padding:10px 22px; font-size:14px;">Fale com um Consultor</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-tag-box">
+        <img src="../../assets/logo-attrium.png" alt="Attrium">
+        <span class="conector">+</span>
+        <img src="../../assets/logo-lumina.png" alt="Lumina" style="max-height:36px; border-radius:6px;">
+        <span style="font-family:'Sora',sans-serif; font-size:15px; font-weight:700; color:var(--azul-marinho);">Lumina Gestão Escolar</span>
+      </div>
+
+      <h1>A Escola Inteira, <span class="laranja">em um só sistema.</span></h1>
+      <p class="lead">
+        Matrícula online, diário de classe digital, acompanhamento pedagógico com Taxonomia de Bloom, gestão financeira automatizada e inteligência artificial preditiva anti-evasão para escolas crescerem com segurança.
+      </p>
+
+      <div class="hero-acoes">
+        <a href="../../#contato" class="btn">Falar com um Consultor Attrium →</a>
+        <a href="#modulos" class="btn outline">Conhecer os Módulos ↓</a>
+      </div>
+
+      <div class="box-destaque">
+        "Do primeiro contato com a família ao fechamento das médias: secretaria, pedagógico, financeiro e comunicação integrados com inteligência artificial para potencializar o aprendizado e zerar o retrabalho."
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTRICAS DE IMPACTO -->
+  <section style="padding: 10px 0 40px;">
+    <div class="container">
+      <div class="grid-metricas">
+        <div class="card-metrica">
+          <div class="num">12+</div>
+          <div class="legenda">Módulos escolares integrados</div>
+        </div>
+        <div class="card-metrica">
+          <div class="num">100%</div>
+          <div class="legenda">Na nuvem & multiunidade</div>
+        </div>
+        <div class="card-metrica">
+          <div class="num">IA</div>
+          <div class="legenda">Alertas preditivos anti-evasão</div>
+        </div>
+        <div class="card-metrica">
+          <div class="num">LGPD</div>
+          <div class="legenda">Conformidade total & Educacenso</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DORES QUE RESOLVE -->
+  <section style="padding: 20px 0;">
+    <div class="container">
+      <div class="secao-dores">
+        <span class="tag" style="color:var(--dourado);">Diagnóstico & Solução</span>
+        <h2>O que a sua escola elimina com o Lumina?</h2>
+        <p class="sub">
+          Dificuldades comuns em instituições de ensino que operam com sistemas legados, planilhas desarticuladas ou retrabalho burocrático constante.
+        </p>
+
+        <div class="grid-dores">
+          <!-- 01 -->
+          <div class="card-dor">
+            <div class="numero-dor">DOR 01</div>
+            <h3>Silos entre Secretaria e Pedagógico</h3>
+            <p>
+              Informações dispersas em cadernos e planilhas paralelas geram atraso no lançamento de notas, divergências em históricos e falta de visão integrada da saúde acadêmica do aluno.
+            </p>
+          </div>
+
+          <!-- 02 -->
+          <div class="card-dor">
+            <div class="numero-dor">DOR 02</div>
+            <h3>Inadimplência sem Controle Automatizado</h3>
+            <p>
+              Cobranças manuais desconfortáveis e sem régua automatizada provocam perdas financeiras e atrasam o fluxo de caixa fundamental para o investimento contínuo da escola.
+            </p>
+          </div>
+
+          <!-- 03 -->
+          <div class="card-dor">
+            <div class="numero-dor">DOR 03</div>
+            <h3>Evasão Escolar Não Antecipada</h3>
+            <p>
+              A escola só percebe o risco de desligamento quando o responsável solicita a transferência. A IA preditiva do Lumina detecta quedas sutis de frequência e rendimento antes que virem evasão.
+            </p>
+          </div>
+
+          <!-- 04 -->
+          <div class="card-dor">
+            <div class="numero-dor">DOR 04</div>
+            <h3>Comunicação Ruidosa com as Famílias</h3>
+            <p>
+              Bilhetes perdidos na mochila e grupos informais de mensagens causam atrito e desinformação. O app dedicado do Lumina centraliza comunicados, calendário e financeiro no celular dos pais.
+            </p>
+          </div>
+
+          <!-- 05 -->
+          <div class="card-dor">
+            <div class="numero-dor">DOR 05</div>
+            <h3>Corrida Exaustiva do Educacenso / MEC</h3>
+            <p>
+              Semanas de retrabalho manual para digitar formulários governamentais sob risco de erros cadastrais. No Lumina, os dados do Censo Escolar/INEP são extraídos automaticamente.
+            </p>
+          </div>
+
+          <!-- 06 -->
+          <div class="card-dor">
+            <div class="numero-dor">DOR 06</div>
+            <h3>Sobrecarga Burocrática dos Professores</h3>
+            <p>
+              Docentes passam horas preenchendo diários de papel e calculando médias. Com chamada com um toque e notas por comando de voz, o professor ganha tempo para focar nos alunos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OS 3 PILARES DO ECOSSISTEMA -->
+  <section style="padding: 40px 0;">
+    <div class="container">
+      <span class="tag">Ecossistema Escolar</span>
+      <h2>Três pilares fundamentais para transformar sua instituição</h2>
+      <p style="color:var(--texto); font-size:18px; max-width:760px; margin-top:8px;">
+        Uma experiência fluida que conecta responsáveis, educadores e diretoria em tempo real.
+      </p>
+
+      <div class="grid-pilares">
+        <!-- PILAR 01 -->
+        <div class="card-pilar">
+          <img src="../../assets/lumina-familia.jpg" alt="Família Conectada" class="card-pilar-img">
+          <div class="card-pilar-corpo">
+            <span class="card-pilar-tag">Pilar 01</span>
+            <h3>Família Conectada</h3>
+            <p>Aproximação genuína entre a escola e os pais através do aplicativo mobile com comunicados instantâneos, acompanhamento de faltas e pagamento facilitado.</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> App do responsável & aluno</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Notificações push de avisos</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Botão "Tô chegando" na portaria</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Matrícula e rematrícula online</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PILAR 02 -->
+        <div class="card-pilar">
+          <img src="../../assets/lumina-aprendizado.jpg" alt="Aprendizado em Foco" class="card-pilar-img">
+          <div class="card-pilar-corpo">
+            <span class="card-pilar-tag">Pilar 02</span>
+            <h3>Aprendizado em Foco</h3>
+            <p>Recursos pedagógicos inovadores que mapeiam a retenção de conhecimento com Taxonomia de Bloom e poupam horas de trabalho burocrático dos professores.</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Diário de classe digital ágil</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Lançamento de notas por comando de voz</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Indicadores da Taxonomia de Bloom</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> IA preditiva com Learning Analytics</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PILAR 03 -->
+        <div class="card-pilar">
+          <img src="../../assets/lumina-gestao.jpg" alt="Gestão Integrada" class="card-pilar-img">
+          <div class="card-pilar-corpo">
+            <span class="card-pilar-tag">Pilar 03</span>
+            <h3>Gestão Integrada</h3>
+            <p>Controle absoluto de toda a operação escolar com dashboards de KPIs em tempo real, régua de cobrança automática, grade horária inteligente e biblioteca 3D.</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Dashboard executivo e financeiro</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Grade horária automática sem conflitos</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Integração com Educacenso / MEC</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Biblioteca digital com acervo 3D</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER SHOWCASE VISUAL -->
+  <section style="padding: 20px 0;">
+    <div class="container">
+      <div class="showcase-banner">
+        <img src="../../assets/lumina-banner.jpg" alt="Plataforma Lumina Gestão Escolar">
+        <div class="showcase-banner-rodape">
+          <div>
+            <h4 style="font-size:18px; margin-bottom:4px;">Tecnologia Boomerang integrada ao ecossistema Attrium</h4>
+            <p style="font-size:14px; color:var(--texto);">Uma suíte corporativa e educacional de alto impacto para instituições modernas.</p>
+          </div>
+          <a href="../../#contato" class="btn" style="padding:10px 24px; font-size:14px;">Solicitar Demonstração</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÓDULOS COMPLETOS -->
+  <section id="modulos" style="padding: 40px 0;">
+    <div class="container">
+      <span class="tag">Módulos da Plataforma</span>
+      <h2>Conheça os recursos que compõem o Lumina</h2>
+      <p style="color:var(--texto); font-size:18px; max-width:760px; margin-top:8px;">
+        12+ módulos projetados especificamente para a rotina e os desafios reais de gestores escolares, coordenadores, secretarias e docentes.
+      </p>
+
+      <div class="grid-modulos">
+        <!-- 01 DASHBOARD -->
+        <div class="card-modulo">
+          <span class="badge-modulo">Gestão Estratégica</span>
+          <h3>Dashboard Inteligente</h3>
+          <p class="funcao">Visão consolidada em tempo real: alunos ativos, taxa de frequência por série, mapa de calor, receita e inadimplência atualizada.</p>
+          <div class="dor">
+            <strong>Impacto:</strong> Decisões rápidas baseadas em dados em vez de impressões ou planilhas defasadas.
+          </div>
+        </div>
+
+        <!-- 02 MATRÍCULAS -->
+        <div class="card-modulo">
+          <span class="badge-modulo">Secretaria & Captação</span>
+          <h3>Matrícula 100% Online</h3>
+          <p class="funcao">Wizard guiado da pré-matrícula ao contrato assinado digitalmente pelo celular do responsável, com upload de documentos e reserva de vaga.</p>
+          <div class="dor">
+            <strong>Impacto:</strong> Elimina filas presenciais na secretaria, pilhas de papel e atritos no período de rematrícula.
+          </div>
+        </div>
+
+        <!-- 03 DIÁRIO DE CLASSE -->
+        <div class="card-modulo">
+          <span class="badge-modulo">Prática Docente</span>
+          <h3>Diário de Classe & Notas por Voz</h3>
+          <p class="funcao">Registro ágil de aulas, chamada com um toque e lançamento facilitado de notas e observações por voz através de qualquer smartphone ou tablet.</p>
+          <div class="dor">
+            <strong>Impacto:</strong> Devolve tempo precioso ao professor, que deixa de gastar fins de semana digitando cadernos de notas.
+          </div>
+        </div>
+
+        <!-- 04 TAXONOMIA DE BLOOM -->
+        <div class="card-modulo">
+          <span class="badge-modulo">Inovação Pedagógica</span>
+          <h3>Taxonomia de Bloom & Lâmpada do Conhecimento</h3>
+          <p class="funcao">Classificação de avaliações por níveis cognitivos (Lembrar, Entender, Aplicar, Analisar, Avaliar e Criar), medindo a real retenção do saber.</p>
+          <div class="dor">
+            <strong>Impacto:</strong> Supera o aprendizado superficial de memorização e entrega diagnósticos pedagógicos profundos.
+          </div>
+        </div>
+
+        <!-- 05 IA PREDITIVA -->
+        <div class="card-modulo">
+          <span class="badge-modulo">Inteligência Artificial</span>
+          <h3>IA Preditiva Anti-Evasão</h3>
+          <p class="funcao">Algoritmos inteligentes que cruzam assiduidade, desempenho por habilidade BNCC e histórico de pagamento para antecipar evasões.</p>
+          <div class="dor">
+            <strong>Impacto:</strong> Permite que a coordenação atue preventivamente antes que a família tome a decisão de saída.
+          </div>
+        </div>
+
+        <!-- 06 FINANCEIRO -->
+        <div class="card-modulo">
+          <span class="badge-modulo">Financeiro & Cobrança</span>
+          <h3>Gestão Financeira & Cobrança Automática</h3>
+          <p class="funcao">Régua de cobrança automática via WhatsApp e e-mail com Pix, boleto, emissão de NFS-e, conciliação bancária e DRE simplificado.</p>
+          <div class="dor">
+            <strong>Impacto:</strong> Redução substancial da taxa de inadimplência no primeiro ano de operação sem desgaste no relacionamento.
+          </div>
+        </div>
+
+        <!-- 07 APP MOBILE -->
+        <div class="card-modulo">
+          <span class="badge-modulo">Comunicação Mobile</span>
+          <h3>App para Famílias & "Tô Chegando"</h3>
+          <p class="funcao">Aplicativo exclusivo para pais e responsáveis com boletim em tempo real, comunicados oficiais, 2ª via de mensalidades e aviso prévio na portaria.</p>
+          <div class="dor">
+            <strong>Impacto:</strong> Segurança, pontualidade no trânsito escolar e satisfação comprovada dos pais e responsáveis.
+          </div>
+        </div>
+
+        <!-- 08 GRADE HORÁRIA -->
+        <div class="card-modulo">
+          <span class="badge-modulo">Operação Escolar</span>
+          <h3>Grade Horária Inteligente</h3>
+          <p class="funcao">Geração e montagem de horários respeitando disponibilidade dos professores, janelas e limites pedagógicos de forma automática.</p>
+          <div class="dor">
+            <strong>Impacto:</strong> Economia de dias de trabalho no início do ano e eliminação total de conflitos de agenda docente.
+          </div>
+        </div>
+
+        <!-- 09 BIBLIOTECA 3D -->
+        <div class="card-modulo">
+          <span class="badge-modulo">Acervo & Espaço</span>
+          <h3>Biblioteca Digital & Editor 3D</h3>
+          <p class="funcao">Gestão de acervo com empréstimos por scanner, controle de multas e visualização tridimensional de estantes e corredores para localizar livros.</p>
+          <div class="dor">
+            <strong>Impacto:</strong> Modernização do espaço de leitura e facilidade de localização física de títulos para estudantes e bibliotecários.
+          </div>
+        </div>
+
+        <!-- 10 EDUCACENSO -->
+        <div class="card-modulo">
+          <span class="badge-modulo">Conformidade Legal</span>
+          <h3>Educacenso / MEC Automatizado</h3>
+          <p class="funcao">Preenchimento automático das informações exigidas pelo Censo Escolar/INEP com validação instantânea de consistência cadastral.</p>
+          <div class="dor">
+            <strong>Impacto:</strong> Zero retrabalho com digitação dupla e conformidade legal assegurada sem estresse na secretaria.
+          </div>
+        </div>
+
+        <!-- 11 CONNECT CRM -->
+        <div class="card-modulo">
+          <span class="badge-modulo">Captação de Alunos</span>
+          <h3>Integração com Connect CRM</h3>
+          <p class="funcao">Do primeiro contato no WhatsApp, Meta ou site até a reserva da vaga: funil comercial integrado que cria a matrícula no Lumina automaticamente.</p>
+          <div class="dor">
+            <strong>Impacto:</strong> Mais oportunidades convertidas em alunos sem perda de contatos de famílias interessadas.
+          </div>
+        </div>
+
+        <!-- 12 SOURCEONE -->
+        <div class="card-modulo">
+          <span class="badge-modulo">Suprimentos & Didáticos</span>
+          <h3>Integração com SourceOne</h3>
+          <p class="funcao">Aproximação direta entre a operação da escola e a cadeia de suprimentos, kits pedagógicos, livros didáticos e uniformes.</p>
+          <div class="dor">
+            <strong>Impacto:</strong> Controle de estoque e pedidos centralizados sem compras descoordenadas ou falta de materiais.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section style="padding: 20px 0 0;">
+    <div class="container">
+      <div class="secao-cta-final">
+        <span class="tag" style="color:var(--dourado);">Parceria Estratégica</span>
+        <h2>Pronto para Modernizar a Gestão da Sua Escola?</h2>
+        <p>A Attrium Soluções Corporativas conecta a inovação do Lumina à sua instituição com diagnóstico de maturidade, planejamento de implantação e acompanhamento contínuo.</p>
+        <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+          <a href="../../#contato" class="btn claro">Falar com um Consultor Attrium →</a>
+          <a href="https://wa.me/5511924870830" target="_blank" rel="noopener noreferrer" class="btn" style="background:#16a34a;">WhatsApp Oficial Lumina: (11) 92487-0830</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="linha">
+      <a href="../../" aria-label="Attrium Soluções Corporativas">
+        <img src="../../assets/logo-attrium.png" alt="Attrium" style="height:60px; filter:brightness(0) invert(1);">
+      </a>
+      <span style="font-size:14px;">Lumina Gestão Escolar · Produto Boomerang · Parceiro Estratégico Attrium</span>
+      <div style="display:flex; gap:20px;">
+        <a href="https://www.luminagestaoescolar.ia.br/" target="_blank" rel="noopener noreferrer">Site Oficial Lumina</a>
+        <a href="../../#contato">Fale Conosco</a>
+      </div>
+    </div>
+    <p style="font-size:13px; opacity:.7; margin-top:24px; text-align:center;">
+      © 2026 Attrium Soluções Corporativas · Todos os direitos reservados.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
