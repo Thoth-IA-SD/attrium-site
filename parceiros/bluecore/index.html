@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blue Core — Saúde Corporativa &amp; Bem-estar | Parceiro Attrium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: visual da página de parceiros da Attrium — fundo gelo, títulos pesados em azul-escuro com destaque laranja, painéis escuros arredondados recuados */
+:root{
+  color-scheme:light;
+  --bg:#F8F9FA; --surface:#FFFFFF; --ink:#0F2035; --body:#3B4858; --muted:#5F6B7A;
+  --orange:#E65100; --orange-soft:#FFF1E8; --line:#E6E8EB; --panel:#0F2035; --panel-fg:#FFFFFF; --panel-muted:#C9D1DC;
+  --bc-navy:#000C96;
+  --display:"Sora","Segoe UI",system-ui,sans-serif;
+  --text:"Inter","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:var(--text);font-size:17px;line-height:1.7;margin:0}
+.wrap{max-width:1140px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+section{padding-block:40px}
+h1,h2,h3{font-family:var(--display);color:var(--ink);margin:0;text-wrap:balance;letter-spacing:-.02em}
+h1{font-size:clamp(2.3rem,5.6vw,3.6rem);font-weight:800;line-height:1.1}
+h2{font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:800;line-height:1.15}
+h3{font-size:1.12rem;font-weight:700;line-height:1.35}
+em{font-style:normal;color:var(--orange)}
+p{margin:0}
+.eyebrow,.label{font-family:var(--display);font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange)}
+.lead{font-size:1.1rem;color:var(--body);max-width:62ch}
+.stack{display:flex;flex-direction:column;gap:20px}
+.head{display:flex;flex-direction:column;gap:14px;margin-bottom:36px;max-width:760px}
+
+/* topo */
+.topnav{position:sticky;top:env(safe-area-inset-top, 0px);z-index:20;background:rgba(248,249,250,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:21;background:var(--bg)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-block:12px}
+.duo{display:flex;align-items:center;gap:14px}
+.duo a{display:inline-flex;align-items:center}
+.duo img.attrium-logo{height:54px;width:auto;display:block}
+.duo img.bclogo-img{height:28px;width:auto;display:block}
+.duo .x{color:var(--muted);font-size:1.1rem;font-weight:600}
+.nav-links{display:flex;gap:24px;align-items:center;flex-wrap:wrap;font-size:.95rem}
+.nav-links a{color:var(--body);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--orange)}
+.nav-links a.btn{color:#fff}
+
+/* botões */
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:999px;font-family:var(--display);font-weight:700;font-size:.98rem;text-decoration:none;border:1px solid var(--ink);color:var(--ink);transition:all .2s ease}
+.btn.primary{background:var(--orange);border-color:var(--orange);color:#fff;box-shadow:0 8px 22px rgba(230,81,0,.28)}
+.btn:hover{filter:brightness(1.05);transform:translateY(-1px)}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+
+.hero{padding-block:40px 24px}
+.quote{margin:40px 0 0;background:var(--surface);border-left:4px solid var(--orange);border-radius:16px;padding:28px 36px;box-shadow:0 6px 24px rgba(15,32,53,.06);font-family:var(--display);font-weight:700;font-size:1.2rem;line-height:1.5;color:var(--ink)}
+.quote small{display:block;font-family:var(--text);font-weight:400;font-size:.8rem;color:var(--muted);margin-top:8px}
+
+/* painel escuro */
+.panel{background:var(--panel);border-radius:28px;padding:56px clamp(20px,5vw,60px)}
+.panel h2,.panel h3{color:var(--panel-fg)}
+.panel .lead,.panel p{color:var(--panel-muted)}
+.panel .label{color:var(--orange)}
+
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pain{background:#1C2B3F;border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.pain .num{font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1;color:var(--orange)}
+.pain p{font-size:.96rem}
+
+.mods{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.mod{background:var(--surface);border:1px solid #EEF0F2;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:10px;min-width:0;box-shadow:0 4px 18px rgba(15,32,53,.04)}
+.mod .label{align-self:flex-start;background:var(--orange-soft);border-radius:999px;padding:5px 12px;font-size:.68rem;letter-spacing:.1em}
+.mod h3{font-size:1.3rem}
+.mod p{font-weight:600;color:var(--ink);font-size:.92rem;line-height:1.55}
+.mod .pain-line{margin-top:auto;background:none;border-radius:0;padding:14px 0 0;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:4px;color:var(--muted);font-size:.86rem;line-height:1.5}
+.mod .pain-line b{font-family:var(--display);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:#D9483B}
+
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.person{display:flex;flex-direction:column;gap:6px;min-width:0;background:#1C2B3F;border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:26px}
+.person .role{font-family:var(--display);font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+.person p{font-size:.94rem}
+
+.logos{margin-top:16px;background:#F7F9FC;border-radius:18px;padding:clamp(16px,3vw,32px)}
+.logos img{display:block;width:100%;height:auto}
+
+.cta-panel{background:#0A1424}
+.cta-panel .final{margin:0 auto;align-items:center;text-align:center}
+.cta-panel .btn.primary{background:#fff;border-color:#fff;color:var(--ink);box-shadow:none}
+.cta-panel .btn.primary:hover{background:var(--orange-soft);color:var(--orange)}
+
+/* rodapé escuro no padrão Attrium */
+footer{background:var(--panel);color:var(--panel-muted);padding-block:48px 32px;margin-top:48px;border-top:1px solid rgba(255,255,255,.08)}
+.foot-container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.foot-brand{display:flex;align-items:center;gap:16px}
+.foot-brand img{height:54px;width:auto;display:block}
+.foot-tag{font-size:.92rem;color:var(--panel-muted)}
+.foot-links{display:flex;gap:24px;align-items:center;font-size:.95rem}
+.foot-links a{color:var(--panel-muted);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:#fff}
+.foot-links a.foot-cta{color:var(--orange);font-weight:700}
+.foot-copy{width:100%;font-size:.82rem;color:var(--panel-muted);opacity:.7;text-align:center;margin-top:24px;border-top:1px solid rgba(255,255,255,.06);padding-top:20px}
+
+@media (max-width:960px){
+  .mods{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:760px){
+  .pains,.team{grid-template-columns:1fr}
+  .nav-links a:not(.btn){display:none}
+  .foot-container{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:480px){
+  .mods{grid-template-columns:1fr}
+  .quote{padding:22px;font-size:1.05rem}
+  .duo img.attrium-logo{height:44px}
+  .duo img.bclogo-img{height:24px}
+}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <div class="wrap nav">
+    <div class="duo">
+      <a href="../../" aria-label="Attrium Soluções Corporativas">
+        <img src="../../assets/logo-attrium.png" alt="Attrium Soluções Corporativas" class="attrium-logo">
+      </a>
+      <span class="x">+</span>
+      <img src="../../assets/logo-bluecore.png" alt="Blue Core" class="bclogo-img">
+    </div>
+    <div class="nav-links">
+      <a href="../../#parceiros">← Voltar aos parceiros</a>
+      <a class="btn primary" href="../../#contato">Fale com a gente →</a>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="stack">
+      <span class="eyebrow">Saúde corporativa &amp; bem-estar</span>
+      <h1>Saúde Irresistível.<br><em>Performance Inteligente.</em></h1>
+      <p class="lead">A Blue Core transforma saúde em engajamento, bem-estar e resultado. São experiências e programas baseados em ciência, na Medicina do Estilo de Vida e nos princípios das Blue Zones, que também apoiam a sua empresa na conformidade com a NR-01.</p>
+      <div class="btns">
+        <a class="btn primary" href="#solucoes">Conheça as 8 soluções →</a>
+        <a class="btn" href="#contato">Falar com a Attrium</a>
+      </div>
+    </div>
+    <blockquote class="quote">
+      Cuidar de saúde não é custo. É o melhor investimento do seu negócio: a cada US$ 1 investido em saúde mental, é possível obter até US$ 4 de retorno.
+      <small>Fonte: The Lancet Psychiatry / OMS, para programas de ansiedade e depressão.</small>
+    </blockquote>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="panel">
+      <div class="head">
+        <h2>Quais Dores a Blue Core Resolve?</h2>
+        <p class="lead">Saúde deixou de ser tema de RH e virou risco para o negócio.</p>
+      </div>
+      <div class="pains">
+        <div class="pain">
+          <span class="num">01</span>
+          <h3>Riscos psicossociais e NR-01</h3>
+          <p>A norma passou a exigir que a empresa identifique e gerencie riscos à saúde mental, e muitas ainda não sabem por onde começar.</p>
+        </div>
+        <div class="pain">
+          <span class="num">02</span>
+          <h3>Afastamentos, absenteísmo e turnover</h3>
+          <p>Em 2025, o Brasil registrou 546 mil afastamentos ligados ao trabalho. Cada um pesa na produtividade, no clima e no custo.</p>
+        </div>
+        <div class="pain">
+          <span class="num">03</span>
+          <h3>Bem-estar que não engaja</h3>
+          <p>Ações isoladas e genéricas têm baixa adesão e não mudam hábitos. Sem continuidade e conexão com a rotina, o investimento não se converte em resultado.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="solucoes">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Soluções Blue Core</span>
+      <h2>Experiências Pontuais e Programas Contínuos.</h2>
+    </div>
+    <div class="mods">
+      <div class="mod">
+        <span class="label">Experiência pontual</span>
+        <h3>Palestras Imersivas</h3>
+        <p>De 45 a 90 minutos sobre stress inteligente, burnout, neuroperformance, aromaterapia para performance e equilíbrio emocional, Blue Zones, liderança e felicidade no trabalho*, com ferramentas práticas que o time aplica na hora e continua usando depois.</p>
+        <small style="font-size:.8rem;color:var(--muted);line-height:1.4">*Outros temas sob demanda. Consulte.</small>
+        <div class="pain-line">
+          <b>Dor que resolve:</b>
+          <span>abrir o tema de saúde com o time de forma leve e científica.</span>
+        </div>
+      </div>
+      <div class="mod">
+        <span class="label">Experiência pontual</span>
+        <h3>Diagnóstico de Estilo de Vida</h3>
+        <p>Análise individual pela plataforma Life Up, com devolutiva da diretora médica. Cada pessoa entende como estão seus hábitos de sono, alimentação, movimento, estresse e conexões, e sai com as prioridades claras para cuidar da saúde.</p>
+        <div class="pain-line">
+          <b>Dor que resolve:</b>
+          <span>investimentos em saúde sem um ponto de partida claro, que não partem das necessidades das pessoas nem das prioridades de mudança.</span>
+        </div>
+      </div>
+      <div class="mod">
+        <span class="label">Experiência pontual</span>
+        <h3>Eventos</h3>
+        <p>Eventos totalmente curados, com ambientação, cardápio, atividades e conteúdos pensados para gerar bem-estar. Ideais para datas especiais, convenções, encontros de fim de ano, lançamentos e experiências de relacionamento com clientes e parceiros.</p>
+        <div class="pain-line">
+          <b>Dor que resolve:</b>
+          <span>empresas que querem cuidar das pessoas em seus encontros, mas não sabem como transformar essa intenção numa experiência.</span>
+        </div>
+      </div>
+      <div class="mod">
+        <span class="label">Experiência pontual</span>
+        <h3>Destination Wellness</h3>
+        <p>Imersões de 1 a 3 dias em ambientes saudáveis, para fortalecer conexões e saúde. Longe da rotina, as pessoas vivem na prática os pilares do estilo de vida saudável e voltam com novos hábitos e um novo mindset.</p>
+        <div class="pain-line">
+          <b>Dor que resolve:</b>
+          <span>mudanças de hábito que nunca saem do papel, porque a rotina não deixa espaço para experimentar.</span>
+        </div>
+      </div>
+      <div class="mod">
+        <span class="label">Programa contínuo</span>
+        <h3>Mentoria em Saúde e Presença Executiva</h3>
+        <p>Jornada para líderes que integra a presença que eles projetam e a saúde que a sustenta: comunicação e influência, protocolo médico de sono, estresse e energia, e organização da agenda. Começa com um diagnóstico integrado e pode ser individual ou em grupo.</p>
+        <div class="pain-line">
+          <b>Dor que resolve:</b>
+          <span>líderes de alta capacidade técnica que não ocupam todo o espaço que poderiam, enquanto o ritmo de trabalho cobra um preço da saúde.</span>
+        </div>
+      </div>
+      <div class="mod">
+        <span class="label">Programa contínuo</span>
+        <h3>Letramentos</h3>
+        <p>Trilhas de aprendizagem estruturadas em 3 a 6 encontros, que combinam treinamentos, workshops e rodas de conversa, alinhados ao contexto, aos desafios e às necessidades da organização. A cada encontro, o tema ganha profundidade e as práticas se consolidam em novos hábitos.</p>
+        <div class="pain-line">
+          <b>Dor que resolve:</b>
+          <span>a dificuldade de transformar conhecimento em hábito quando o tema é tratado em um único encontro.</span>
+        </div>
+      </div>
+      <div class="mod">
+        <span class="label">Programa contínuo</span>
+        <h3>Trilha NR-01</h3>
+        <p>Programa estruturado para a gestão de riscos psicossociais exigida pela NR-01. Atuamos nas três etapas: diagnóstico, programas contínuos e melhoria contínua.</p>
+        <div class="pain-line">
+          <b>Dor que resolve:</b>
+          <span>a necessidade de atender à NR-01 com consistência, transformando uma exigência legal em ações de saúde e bem-estar com resultados mensuráveis.</span>
+        </div>
+      </div>
+      <div class="mod">
+        <span class="label">Programa contínuo</span>
+        <h3>Programa Personalizado</h3>
+        <p>Trilha completa de 6 a 12 meses, desenhada sob medida para a empresa e o time. Integra diagnóstico, letramentos, workshops, eventos e palestras, com desafios entre os encontros para que as mudanças se consolidem ao longo do programa.</p>
+        <div class="pain-line">
+          <b>Dor que resolve:</b>
+          <span>empresas com desafios diversos de saúde e bem-estar, que precisam de uma estratégia integrada no lugar de ações isoladas.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="panel">
+      <div class="head">
+        <span class="eyebrow">Quem conduz</span>
+        <h2>Ciência, Medicina e Comportamento na Mesma Equipe.</h2>
+      </div>
+      <div class="team">
+        <div class="person">
+          <h3>Dra. Heloisa Nogueira, MD</h3>
+          <span class="role">Cofundadora e diretora médica</span>
+          <p>Médica especialista em Medicina do Estilo de Vida e Saúde Mental Funcional Integrativa.</p>
+        </div>
+        <div class="person">
+          <h3>Gustavo Belchior, PhD</h3>
+          <span class="role">Cofundador e conselheiro</span>
+          <p>Biólogo, PhD em bioquímica, com 20 anos em pesquisa, desenvolvimento e inovação.</p>
+        </div>
+        <div class="person">
+          <h3>Paula Moreno</h3>
+          <span class="role">Cofundadora e CMO</span>
+          <p>18 anos no mercado corporativo em Marketing e Customer Experience, 10 deles como líder e executiva. Aromaterapeuta e especialista em organização pessoal.</p>
+        </div>
+      </div>
+      
+      <div style="margin-top:40px">
+        <span class="label">Empresas que confiam na Blue Core</span>
+        <div class="logos">
+          <img src="../../assets/clientes-bluecore.jpg" alt="Clientes Blue Core: Porto Seguro, Link School of Business, Bisutti, MarketUP, CX Experience, Oliver School, St. Nicholas School, Citron Gastronomia, MRV, Julio Perinetto, Nossa Agência Eventos, Kits &amp; Cards, XRM Xavier Reis &amp; Martins, Mariana Bassi, Forster Seguros, Giuliana Pimenta, M2G Consultoria, Eleven Bar" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap">
+    <div class="panel cta-panel">
+      <div class="final">
+        <span class="eyebrow">Parceria estratégica</span>
+        <h2>Pronto para Levar Saúde e Performance para o Seu Time?</h2>
+        <p class="lead">A Attrium faz o diagnóstico da sua necessidade, desenha a solução com a Blue Core e acompanha a implementação do começo ao fim.</p>
+        <div class="btns">
+          <a class="btn primary" href="../../#contato">Falar com um Consultor Attrium →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-container">
+    <div class="foot-brand">
+      <a href="../../" aria-label="Attrium Soluções Corporativas">
+        <img src="../../assets/logo-attrium-branco.png" alt="Attrium Soluções Corporativas">
+      </a>
+      <span class="foot-tag">Blue Core · Parceiro Estratégico</span>
+    </div>
+    <div class="foot-links">
+      <a href="../../#parceiros">Outros Parceiros</a>
+      <a href="../../#contato" class="foot-cta">Fale Conosco</a>
+    </div>
+    <div class="foot-copy">
+      © 2026 Attrium Soluções Corporativas. Todos os direitos reservados.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
